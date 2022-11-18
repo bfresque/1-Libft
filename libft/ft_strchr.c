@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:46:20 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/16 15:33:39 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:33:07 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	*ft_strchr(const char *s, int c)
 	char	*str;
 
 	str = (char *)s;
-	while (*str && c != *str)
+	while (*str && *str != (char)c)
 		str++;
-	if (*str == c)
+	if (*str == (char)c)
 		return (str);
 	return (NULL);
 }

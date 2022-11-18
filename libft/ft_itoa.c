@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/18 14:01:49 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:00:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*ft_itoa(int n)
 
 	i = size(n);
 	str = malloc(sizeof(char) * i + 1);
+	if (!str)
+		return (NULL);
 	str[i] = '\0';
 	if (n == -2147483648)
 		return ("-2147483648");
