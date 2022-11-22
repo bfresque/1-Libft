@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 11:21:43 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/21 11:22:15 by bfresque         ###   ########.fr       */
+/*   Created: 2022/11/21 11:23:01 by bfresque          #+#    #+#             */
+/*   Updated: 2022/11/22 17:33:57 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_list *ft_lstnew(void *content)
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-    
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

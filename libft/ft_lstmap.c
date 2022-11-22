@@ -6,11 +6,16 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:26:31 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/21 11:26:55 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:32:58 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+#include "libft.h"
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-    
+
+   //lstiter
+   //lstnew
+   //delone 
 }
