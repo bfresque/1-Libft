@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:23:50 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/16 12:35:32 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/23 17:19:01 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,15 @@ char	*ft_strdup(char const *s)
 	char	*str;
 
 	i = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen((char *)s) + 1);
+	str = malloc(sizeof(char) * ft_strlen(s) + 1);
 	if (!str)
 	{
 		return (NULL);
 	}
-	else
+	while (s[i] != '\0')
 	{
-		while (s[i] != '\0')
-		{
-			str[i] = s[i];
-			i++;
-		}
+		str[i] = s[i];
+		i++;
 	}
 	str[i] = '\0';
 	return (str);

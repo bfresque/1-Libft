@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:23:10 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/15 13:43:26 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/23 10:53:28 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,3 @@ void	ft_putstr_fd(char *s, int fd)
 		}
 	}
 }
-/*
-#include <stdio.h>
-int main(int ac, char **av)
-{
-	ft_putstr_fd(av[1], 1);
-	return(0);
-}*/

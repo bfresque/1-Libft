@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:20:02 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/18 10:41:19 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/23 17:50:40 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	j;
 
-	str = (char *)malloc(sizeof(s) * (len + 1));
+	str = malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
 	i = 0;

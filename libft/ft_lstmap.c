@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:26:31 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/22 17:32:58 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/23 17:59:27 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,23 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*new;
+	t_list	*temp;
 
-   //lstiter
-   //lstnew
-   //delone 
+	new = 0;
+	if (!lst || !f)
+		return (NULL);
+	temp = 0;
+	while (lst)
+	{
+		temp = ft_lstnew((*f)(lst->content));
+		if (!temp)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, temp);
+		lst = lst->next;
+	}
+	return (new);
 }
