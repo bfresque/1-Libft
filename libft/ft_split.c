@@ -6,20 +6,13 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:23:13 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/23 17:05:51 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:09:59 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_split(char const *s, char c)
-{
-	(void) *s;
-	(void) c;
-	return (NULL);
-}
-
-/*static int	count_word(const char *str, char c)
+static int	ft_count_word(const char *str, char c)
 {
 	size_t	i;
 	size_t	l;
@@ -28,7 +21,7 @@ char	**ft_split(char const *s, char c)
 	l = 0;
 	while (*str)
 	{
-		if(*str != c && l == 0)
+		if (*str != c && l == 0)
 		{
 			i++;
 			l = 1;
@@ -36,25 +29,46 @@ char	**ft_split(char const *s, char c)
 		else if (*str == c)
 			l = 0;
 		str++;
-	} 
-	return(i);
+	}
+	return (i);
 }
-static int word_size(const char *str, int i)
-{
-	int nb;
 
-	nb = 0;
-	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+static int	ft_size_word(char const *s, char c, int i)
+{
+	size_t	size;
+
+	size = 0;
+	while (s[i] != c && s[i])
 	{
-		nb++;
+		size++;
 		i++;
 	}
-	return (nb);
+	return (size);
 }
 
-#include<stdio.h>
-int main ()
+char	**ft_split(char const *s, char c)
 {
-	printf("%d \n", count_word("un        123    \n    deux 		  trois quatre cinq six sept huit ", ' '));
-	printf("%d \n", word_size(" bonjourtrois ", 1));
-}*/
+	int		i;
+	int		j;
+	char	**str;
+
+	i = 0;
+	j = -1;
+	str = (char **)malloc((ft_count_word(s, c) + 1) * sizeof(char *));
+	if (!str)
+		return (NULL);
+	while (++j < ft_count_word(s, c))
+	{
+		while (s[i] == c)
+			i++;
+		str[j] = ft_substr(s, i, ft_size_word(s, c, i));
+		if (!str[j])
+		{
+			free(str[j]);
+			return (NULL);
+		}
+			i += ft_size_word(s, c, i);
+	}
+	str[j] = 0;
+	return (str);
+}

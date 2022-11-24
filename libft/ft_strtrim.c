@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:20:28 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/23 17:00:54 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:23:57 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	j;
 	char	*str;
 
+	if (!s1 || !set)
+		return (NULL);
 	str = 0;
 	i = 0;
 	j = ft_strlen(s1);

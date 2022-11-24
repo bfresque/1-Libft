@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:46:28 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/16 11:03:49 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:55:37 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!dest)
+	if (!dest && !src)
 		return (NULL);
 	while (i < n)
 	{

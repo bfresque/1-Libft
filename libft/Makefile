@@ -6,88 +6,89 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 18:14:20 by bfresque          #+#    #+#              #
-#    Updated: 2022/11/23 14:42:22 by bfresque         ###   ########.fr        #
+#    Updated: 2022/11/24 16:04:56 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+SRCS    =     ft_isalpha.c \
+			ft_isdigit.c \
+			ft_isalnum.c \
+			ft_isascii.c \
+			ft_isprint.c \
+			ft_strlen.c \
+			ft_memset.c \
+			ft_bzero.c \
+			ft_memcpy.c \
+			ft_memmove.c \
+			ft_strlcpy.c \
+			ft_strlcat.c \
+			ft_toupper.c \
+			ft_tolower.c \
+			ft_strchr.c \
+			ft_strrchr.c \
+			ft_strncmp.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_strnstr.c \
+			ft_atoi.c \
+			ft_calloc.c \
+			ft_strdup.c \
+			ft_substr.c \
+			ft_strjoin.c \
+			ft_split.c \
+			ft_strmapi.c \
+			ft_striteri.c \
+			ft_putchar_fd.c \
+			ft_putstr_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c \
+			ft_strtrim.c \
+			ft_itoa.c
 
-CC = gcc
+OBJS    =    ${SRCS:.c=.o}
 
-CFLAGS = -Wall -Wextra -Werror
+BONUS_SRCS    =    ft_lstnew.c \
+				ft_lstadd_front.c \
+				ft_lstsize.c \
+				ft_lstlast.c \
+				ft_lstadd_back.c \
+				ft_lstdelone.c \
+				ft_lstclear.c \
+				ft_lstiter.c \
+				ft_lstmap.c 
 
-SRC =  ft_atoi.c \
-    ft_bzero.c \
-    ft_calloc.c \
-    ft_isalnum.c \
-    ft_isalpha.c \
-    ft_isascii.c \
-    ft_isdigit.c \
-    ft_isprint.c \
-    ft_itoa.c \
-    ft_memchr.c \
-    ft_memcmp.c \
-    ft_memcpy.c \
-    ft_memmove.c \
-    ft_memset.c \
-    ft_putchar_fd.c \
-    ft_putendl_fd.c \
-    ft_putnbr_fd.c \
-    ft_putstr_fd.c \
-    ft_split.c \
-    ft_strchr.c \
-    ft_strdup.c \
-    ft_striteri.c \
-    ft_strjoin.c \
-    ft_strlcat.c \
-    ft_strlcpy.c \
-    ft_strlen.c \
-    ft_strmapi.c \
-    ft_strncmp.c \
-    ft_strnstr.c \
-    ft_strrchr.c \
-    ft_strtrim.c \
-    ft_substr.c \
-    ft_tolower.c \
-    ft_toupper.c \
+BONUS_OBJS = ${BONUS_SRCS:.c=.o}
 
-SRC_BONUS = ft_lstadd_back.c \
-		ft_lstadd_front.c \
-		ft_lstclear.c \
-		ft_lstdelone.c \
-		ft_lstiter.c \
-		ft_lstlast.c \
-		ft_lstmap.c \
-		ft_lstnew.c \
-		ft_lstsize.c \
+NAME	= libft.a
 
-OBJ = $(SRC:.c=.o)
+CC	= gcc
+CFLAGS	= -Wall -Wextra -Werror
 
-BONUS_OBJ = $(SRC_BONUS:.c=.o)
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-AR = ar rcs 
+all:        ${NAME}
 
-RM = rm -f
+$(NAME):    ${OBJS}
+	ar rc ${NAME} ${OBJS}
+	ranlib ${NAME}
 
-%.o : %.c 
-	$(CC) $(FLAGS) -c $< -o $@
+clean:
+	rm -f ${OBJS} ${BONUS_OBJS}
 
-$(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+fclean:	clean
+	rm -f ${NAME}
 
-bonus : $(BONUS_OBJ)
-	$(AR) $(NAME) $(BONUS_OBJ)
+re:	fclean all
 
-all : $(NAME)
+rebonus:	fclean bonus
 
+bonus:	${OBJS} ${BONUS_OBJS}
+	ar rc ${NAME} ${OBJS} ${BONUS_OBJS}
+	ranlib ${NAME}
 
-
-clean : 
-	$(RM) $(OBJ) $(BONUS_OBJ)
-
-fclean : clean 
-	$(RM) $(NAME)
-
-re : fclean all
-
-.PHONY: all clean fclean re 
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAG) $(SRCS) $(BONUS_SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)
+	
+.PHONY:	all clean fclean re bonus rebonus
