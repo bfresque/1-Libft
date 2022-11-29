@@ -6,69 +6,109 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:23:13 by bfresque          #+#    #+#             */
-/*   Updated: 2022/11/24 11:09:59 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:23:55 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_word(const char *str, char c)
+static char	ft_separateur(char cmp, char c)
 {
-	size_t	i;
-	size_t	l;
-
-	i = 0;
-	l = 0;
-	while (*str)
-	{
-		if (*str != c && l == 0)
-		{
-			i++;
-			l = 1;
-		}
-		else if (*str == c)
-			l = 0;
-		str++;
-	}
-	return (i);
+	if (cmp == c)
+		return (1);
+	return (0);
 }
 
-static int	ft_size_word(char const *s, char c, int i)
+static int	ft_alloctxt(char **tab, const char *s, char c)
 {
-	size_t	size;
+	int	word_len;
+	int	i;
 
-	size = 0;
-	while (s[i] != c && s[i])
+	i = 0;
+	while (*s)
 	{
-		size++;
+		while (*s && ft_separateur(*s, c))
+			s++;
+		word_len = 0;
+		while (*s && ft_separateur(*s, c) == 0)
+		{
+			word_len++;
+			s++;
+		}
+		if (word_len != 0)
+		{
+			tab[i] = malloc(word_len + 1);
+			if (tab[i] == 0)
+				return (0);
+			tab[i++][word_len] = 0;
+		}
+	}
+	return (1);
+}
+
+static void	ft_filltab(char **tab, const char *s, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (*s && tab[i])
+	{
+		while (*s && ft_separateur(*s, c))
+			s++;
+		j = 0;
+		while (*s && ft_separateur(*s, c) == 0)
+			tab[i][j++] = *(s++);
 		i++;
 	}
-	return (size);
+}
+
+static unsigned int	ft_countwords(char const *s, char c)
+{
+	int	count;
+	int	i;
+
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		if (s[i] && ft_separateur(s[i], c) == 0)
+		{
+			count++;
+			i++;
+		}
+		while (s[i] && ft_separateur(s[i], c) == 0)
+			i++;
+		while (s[i] && ft_separateur(s[i], c))
+			i++;
+	}
+	return (count);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	char	**str;
+	char				**tab;
+	unsigned int		nb_words;
+	unsigned int		i;
 
-	i = 0;
-	j = -1;
-	str = (char **)malloc((ft_count_word(s, c) + 1) * sizeof(char *));
-	if (!str)
+	if (!s)
 		return (NULL);
-	while (++j < ft_count_word(s, c))
+	nb_words = ft_countwords(s, c);
+	tab = malloc((nb_words + 1) * sizeof(char *));
+	if (tab == 0)
+		return (0);
+	tab[nb_words] = 0;
+	if (nb_words > 0)
 	{
-		while (s[i] == c)
-			i++;
-		str[j] = ft_substr(s, i, ft_size_word(s, c, i));
-		if (!str[j])
+		if (ft_alloctxt(tab, s, c) == 0)
 		{
-			free(str[j]);
-			return (NULL);
+			i = 0;
+			while (tab[i])
+				free(tab[i++]);
+			free(tab);
+			return (0);
 		}
-			i += ft_size_word(s, c, i);
+		ft_filltab(tab, s, c);
 	}
-	str[j] = 0;
-	return (str);
+	return (tab);
 }

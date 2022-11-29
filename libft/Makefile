@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/16 18:14:20 by bfresque          #+#    #+#              #
-#    Updated: 2022/11/24 16:04:56 by bfresque         ###   ########.fr        #
+#    Created: 2022/11/25 10:34:58 by bfresque          #+#    #+#              #
+#    Updated: 2022/11/25 11:17:03 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,9 +86,5 @@ rebonus:	fclean bonus
 bonus:	${OBJS} ${BONUS_OBJS}
 	ar rc ${NAME} ${OBJS} ${BONUS_OBJS}
 	ranlib ${NAME}
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAG) $(SRCS) $(BONUS_SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)
 	
 .PHONY:	all clean fclean re bonus rebonus

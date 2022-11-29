@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 14:54:05 by baptistefre       #+#    #+#             */
-/*   Updated: 2022/11/15 13:32:02 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:24:22 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ int	ft_isprint(int c)
 		return (1);
 	return (0);
 }
-/* MAIN FAUX
-int main(int ac, char **av)
-{
-	ft_isprint("test");
-}
-*/

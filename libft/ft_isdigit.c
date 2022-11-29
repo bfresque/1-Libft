@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 14:58:15 by baptistefre       #+#    #+#             */
-/*   Updated: 2022/11/15 13:31:38 by bfresque         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:24:15 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
-/*
-int main(int ac, char **av)
-{
-	ft_isdigit(av[1]);
-}
-*/
