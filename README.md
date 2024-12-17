@@ -2,7 +2,9 @@
 # **Libft: Your Own Library**
 
 ## **Project Description**
-The purpose of this project is to create your own C library that contains a set of standard utility functions. These functions can later be reused in your future C projects. You will also deepen your understanding of C programming, memory management, and library creation.
+The purpose of this project is to create your own C library that contains a set of standard utility functions.
+These functions can later be reused in your future C projects.
+You will also deepen your understanding of C programming, memory management, and library creation.
 
 ---
 
@@ -98,7 +100,7 @@ If the mandatory part is completed perfectly, implement these bonus functions fo
 
 1. **Clone the repository**:
    ```bash
-   git clone <your_repository_url>
+   git clone my_repo
    cd libft
    ```
 
@@ -118,36 +120,3 @@ If the mandatory part is completed perfectly, implement these bonus functions fo
    ```
 
 ---
-
-## **Testing**
-
-It is highly recommended to write your own test programs to verify the correctness of each function. Use the following template to test your library:
-
-```c
-#include "libft.h"
-#include <stdio.h>
-
-int main(void)
-{
-    printf("Length of 'Hello': %zu\n", ft_strlen("Hello"));
-    return 0;
-}
-```
-
-Compile with:
-```bash
-gcc -Wall -Wextra -Werror main.c libft.a -o test
-./test
-```
-
----
-
-## **Submission and Evaluation**
-
-1. Submit your work to the assigned Git repository.  
-2. Ensure that all files are at the root of the repository.  
-3. The **bonus** part will only be evaluated if the mandatory part is perfect.
-
----
-
-### 🚀 **Good luck and have fun coding!** 🎉
